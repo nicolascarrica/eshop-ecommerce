@@ -6,6 +6,9 @@ import { HiOutlineMenuAlt3 } from 'react-icons/hi'
 import { auth } from '../../firebase/config';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { toast } from 'react-toastify';
+import { useDispatch } from 'react-redux';
+import { SET_ACTIVE_USER } from '../../redux/slice/authSlice';
+
 
 const logo  = (
   <div className={styles.logo}>
@@ -34,14 +37,26 @@ const Header = () => {
   const [displayName, setDisplayName] = useState("");
   const navigate = useNavigate();
 
+  const dispatch = useDispatch();
+
   //Monitor currently logged in user
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-       
-        const uid = user.uid;
-        console.log(user.displayName);
-        setDisplayName(user.displayName);
+        if(user.displayName == null) {
+          const name = user.email.split("@")[0];
+          const capitalName = name.charAt(0).toUpperCase() + name.slice(1);
+          setDisplayName(capitalName);
+        } else {
+          setDisplayName(user.displayName);
+        }
+        
+
+        dispatch(SET_ACTIVE_USER({
+          email: user.email,
+          userName: user.displayName ? user.displayName : displayName,
+          userID: user.uid,
+        }));
 
       } else {
         setDisplayName("");
