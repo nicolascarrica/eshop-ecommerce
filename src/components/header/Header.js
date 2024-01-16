@@ -44,7 +44,7 @@ const Header = () => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         if(user.displayName == null) {
-          const name = user.email.split("@")[0];
+          const name = user.email.substring(0, user.email.indexOf("@"));
           const capitalName = name.charAt(0).toUpperCase() + name.slice(1);
           setDisplayName(capitalName);
         } else {
