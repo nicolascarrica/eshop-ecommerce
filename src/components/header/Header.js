@@ -7,7 +7,7 @@ import { auth } from '../../firebase/config';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
-import { SET_ACTIVE_USER } from '../../redux/slice/authSlice';
+import { SET_ACTIVE_USER, REMOVE_ACTIVE_USER } from '../../redux/slice/authSlice';
 
 
 const logo  = (
@@ -50,8 +50,6 @@ const Header = () => {
         } else {
           setDisplayName(user.displayName);
         }
-        
-
         dispatch(SET_ACTIVE_USER({
           email: user.email,
           userName: user.displayName ? user.displayName : displayName,
@@ -60,9 +58,10 @@ const Header = () => {
 
       } else {
         setDisplayName("");
+        dispatch(REMOVE_ACTIVE_USER());
       }
     });
-  }, []);
+  }, [dispatch, displayName]);
 
   const toggleMenu = () => {
     setShowMenu(!showMenu)
