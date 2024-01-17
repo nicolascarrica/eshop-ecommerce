@@ -1,6 +1,6 @@
-import React from 'react'
 import { useSelector } from 'react-redux'
 import { selectIsLoggedIn } from '../../redux/slice/authSlice'
+import PropTypes from 'prop-types';
 
 export const ShowOnLogin = ({ children }) => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -10,6 +10,10 @@ export const ShowOnLogin = ({ children }) => {
   return null
 }
 
+ShowOnLogin.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
 export const ShowOnLogout = ({ children }) => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   if(!isLoggedIn) {
@@ -18,3 +22,6 @@ export const ShowOnLogout = ({ children }) => {
   return null
 }
 
+ShowOnLogout.propTypes = {
+  children: PropTypes.node.isRequired,
+};
