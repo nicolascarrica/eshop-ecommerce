@@ -15,7 +15,7 @@ const logo  = (
   <div className={styles.logo}>
     <Link to="/">
       <h2>
-        e<span>Shop.</span>
+        carri<span>Shop.</span>
       </h2>
     </Link>
   </div>
@@ -102,7 +102,7 @@ const Header = () => {
                <NavLink to="/" className={activeLink}>Home</NavLink>
             </li>
             <li>
-               <NavLink to="/contact" className={activeLink}>Contact Us</NavLink>
+               <NavLink to="/contact" className={activeLink}>About Us</NavLink>
             </li>
           </ul>
           <div className={styles["header-right"]} onClick={hideMenu}>
