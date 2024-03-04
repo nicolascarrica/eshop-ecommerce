@@ -1,0 +1,87 @@
+.product {
+  display: flex;
+  flex-direction: column; /* Para alinear los elementos en columna */
+  align-items: center; /* Para alinear verticalmente */
+  justify-content: center; /* Para alinear horizontalmente */
+  margin: 20px;
+  padding: 10px;
+
+  
+    .image {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+  
+    .details {
+      margin-top:20px
+    }
+  
+    .name {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+  
+    .price {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+  
+    .selectors {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 10px;
+    }
+  
+    .label {
+      font-size: 15px;
+      margin-bottom: 5px;
+    }
+  
+    .colorSelect,
+    .sizeSelect {
+      padding: 10px;
+      font-size: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-bottom: 8px;
+    }
+  
+    .quantity {
+        margin-bottom: 10px;
+        align-items: center;
+        
+      
+        .quantityControls {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      
+        .quantityButton {
+          padding: 5px 10px;
+          font-size: 16px;
+          background-color: var(--dark-blue);;
+          color: #fff;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+      
+          &:hover {
+            background-color: #0056b3;
+          }
+        }
+      
+        .quantityInput {
+          width: 50px;
+          padding: 5px;
+          font-size: 16px;
+          text-align: center;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          margin: 0 10px;
+        }
+      }
+  }
+  
