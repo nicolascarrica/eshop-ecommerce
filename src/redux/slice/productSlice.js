@@ -13,6 +13,7 @@ const productSlice = createSlice({
                 const filter = storeData.filter((product) => product.type === action.payload);
                 state.filteredProducts = filter;
                 state.error = false;
+                console.log('filter', filter)
                 const saveState = JSON.stringify(filter)
                 sessionStorage.setItem("filteredData", saveState);
             }
