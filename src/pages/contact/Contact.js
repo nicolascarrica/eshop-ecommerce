@@ -20,7 +20,6 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Aquí puedes realizar acciones con los datos del formulario, como enviarlos a un servidor
     console.log(formData);
     toast.success('Message sent successfully!');
     setFormData({ firstName: '', lastName: '', message: '' });
@@ -31,9 +30,19 @@ const Contact = () => {
       <h2>Contact</h2>
       <div className={styles.about}>
         <h3>About Us </h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        <p>Phone: 123-456-789</p>
-        <p>Address: Calle Falsa 123, Ciudad Ficticia</p>
+        <h3>Welcome to CarriShop</h3>  
+        <p>At CarriShop, our commitment goes beyond offering high-quality products;
+          we also strive to provide an exceptional shopping experience.
+          Our team of fashion and sports experts is always available to provide personalized advice and ensure you find exactly what you need to achieve your fitness goals and look great while doing it.
+        </p>
+        <br/>
+        <p>
+          Whether you're a professional athlete or a casual fitness enthusiast, at CarriShop Apparel, you'll find everything you need to stay active, motivated, and ready to tackle any challenge you set for yourself. Join our community today and discover how style and performance can go hand in hand at every step of your fitness journey!  
+        </p>
+        <br/>
+        <p><b>Phone: </b> 123-456-789</p>
+        <br/>
+        <p><b>Address:</b> Calle Falsa 123, Ciudad Ficticia</p>
       </div>
       <div className={styles.formContainer}>
         <h3>Contact Form</h3>

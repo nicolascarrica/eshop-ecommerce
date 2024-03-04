@@ -3,42 +3,45 @@
   flex-direction: column;
   margin-top: 2rem;
   align-items: center;
-  height: 100vh;
+  height: 100%;
+
 
   h2 {
-    font-size: 3rem;
+    font-size: 2rem;
     color: #333;
     text-align: center;
     margin-bottom: 1.5rem;
   }
 
   .about {
-    margin: 2rem;
+    margin: 1.5rem;
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 
     h3 {
-      font-size: 2.5rem;
+      font-size: 1.5rem;
       margin-bottom: 1rem;
     }
     p {
-      font-size: 1.5rem;
+      font-size: 1.25rem;
       margin-bottom: 0.5rem;
+      max-width: 600px;
+      text-align:justify;
     }
   }
 
   .formContainer {
-    max-width: 600px; /* Ancho máximo del formulario */
+    max-width: 500px; 
     width: 100%;
-    padding: 20px;
-    background-color: #f9f9f9; /* Color de fondo del formulario */
+    padding: 10px;
+    background-color: #f9f9f9; 
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 
     h3 {
-      font-size: 2rem;
+      font-size: 1.5rem;
       margin-bottom: 1rem;
     }
     .formGroup {
@@ -47,10 +50,10 @@
       textarea {
         width: 100%;
         padding: 0.5rem;
-        font-size: 1.5rem;
+        font-size: 1.25rem;
         border: 1px solid #ccc;
         border-radius: 4px;
-        box-sizing: border-box; /* Asegura que el padding no aumente el ancho del elemento */
+        box-sizing: border-box; 
       }
       textarea {
         height: 100px;
@@ -81,7 +84,8 @@
     ul {
       list-style: none;
       padding: 0;
-      margin: 0;
+      margin: 1.25rem;
+      font-size: 1.25rem;
       li {
         display: inline-block;
         margin-right: 1rem;
