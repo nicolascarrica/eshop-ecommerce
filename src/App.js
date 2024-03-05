@@ -5,6 +5,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import FilteredProducts from "./pages/Products/FilteredProducts";
 import SingleProduct from "./pages/Products/SingleProduct";
+import Cart from "./pages/cart/Cart";
 
 
 
@@ -19,6 +20,7 @@ function App() {
           <Route path="/login" element={<Login />}/>
           <Route path="/register" element={<Register />}/>
           <Route path="/reset" element={<Reset />}/>
+          <Route path="cart" element={<Cart />}/>
           <Route path="/filteredProducts/:type" element={<FilteredProducts />}/>
           <Route path="/filteredProducts/:type/:id" element={<SingleProduct />}/>
         </Routes>
