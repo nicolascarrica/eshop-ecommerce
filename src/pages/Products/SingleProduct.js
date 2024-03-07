@@ -20,69 +20,60 @@ const SingleProduct = () => {
   }
 
   return (
-    <>
-    <div className={styles.product}>
-    <NavigateButtons/>
-    </div>
-    <div className={styles.product}>
-      <div>
-        <div>
-          <img 
-            src={product.img} alt={product.name} 
-            className={styles.image}
-          />
-        </div>
-        <div className={styles.details}>
-          <h2 className={styles.name}>{product.name}</h2>
-          <p className={styles.price}> ${product.price}</p>
-          <div className={styles.selectors}>
-          <label htmlFor='color' className={styles.label}>Pick a Color</label>
-            <select 
-              className={styles.colorSelect}
-              id='color'
-              name='color'
-              value={selectedColor}
-              onChange={(e) => setColor(e.target.value)}
-            >
-              {product.color.map((color, index) => {
-                return (
-                  <option
-                    key={index}
-                    value={color}
-                  >
+      <div className={styles.product}>
+        <NavigateButtons />
+        <div className={styles.productDetails}>
+          <div className={styles.detail}>
+            <div className={styles.imageContainer}>
+              <img src={product.img} alt={product.name} className={styles.image} />
+            </div>
+            <div className={styles.textDetails}>
+              <div>
+                <p className={styles.name}>{product.name}</p>
+              </div>
+              <div>
+                <p className={styles.price}>Price: ${product.price}</p>
+              </div>
+            </div>
+          </div>
+          <div className={styles.selectorsAndButton}>
+            <div className={styles.selectors}>
+              <label htmlFor='color' className={styles.label}>Pick a Color:</label>
+              <select
+                className={styles.colorSelect}
+                id='color'
+                name='color'
+                value={selectedColor}
+                onChange={(e) => setColor(e.target.value)}
+              >
+                {product.color.map((color, index) => (
+                  <option key={index} value={color}>
                     {color.toUpperCase()}
                   </option>
-                )
-              })}
-            </select>
-            <label htmlFor='size' className={styles.label}>Pick a size</label>
-            <select 
-              className={styles.sizeSelect}
-              id='size'
-              name='size'
-              value={selectedSize}
-              onChange={(e) => setSize(e.target.value)}
-            >
-              {product.size.map((size, index) => {
-                return (
-                  <option
-                    key={index}
-                    value={size}
-                  >
+                ))}
+              </select>
+              <label htmlFor='size' className={styles.label}>Pick a Size:</label>
+              <select
+                className={styles.sizeSelect}
+                id='size'
+                name='size'
+                value={selectedSize}
+                onChange={(e) => setSize(e.target.value)}
+              >
+                {product.size.map((size, index) => (
+                  <option key={index} value={size}>
                     {size}
                   </option>
-                )
-              })}
-            </select>
-          </div> 
-        </div>
-        <div className={styles.product}>
-        <AddToCartButton product={product} selectedSize={selectedSize} selectedColor={selectedColor} />
+                ))}
+              </select>
+            </div>
+            <div className={styles.productButton}>
+              <AddToCartButton product={product} selectedSize={selectedSize} selectedColor={selectedColor} />
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    </>
-  )
+  );
 }
 
 export default SingleProduct
