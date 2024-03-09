@@ -1,5 +1,5 @@
 .product-container {
-    padding-top: 4rem;
+    padding-top: 4cap;
   
     .title {
       text-align: center;
@@ -7,13 +7,14 @@
       color: #333;
       font-weight: bold;
       font-family: 'Inter', sans-serif;
-      margin-bottom: 2rem;
+      margin-bottom: 0.25rem;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(4, minmax(0,1fr));
       justify-items: center;
+      align-items: start;
       padding-top: 8rem;
       gap: 12px;
   
@@ -23,8 +24,8 @@
   
       @media (max-width: 450px) {
         grid-template-columns: repeat(1, minmax(0, 1fr));
-      }
+        align-items: center;
   }
-  
+}
 
 }
