@@ -1,6 +1,6 @@
 .productContainer {
     display: flex;
-    margin-bottom: 20px;
+    margin-bottom:10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 10px;
@@ -18,7 +18,6 @@
     width: 100px;
     height: 100px;
     object-fit: cover;
-    margin-right: 10px;
 }
 
 .productDetails {
@@ -29,12 +28,6 @@
         font-size: 2rem;
     }
 
-}
-
-.quantityControls {
-    display: flex;
-    align-items: center;
-    margin-top: 10px;
 }
   
 .quantityControls button {
@@ -49,14 +42,60 @@
 .quantityControls input {
     width: 40px;
     text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
     margin: 0 10px;
+    
   }
   
 .removeButton {
     background-color: #ff6347;
     color: #fff;
     border: none;
-    padding: 5px 10px;
+    padding: 2px 8px;
     cursor: pointer;
     border-radius: 5px;
 }
+
+@media screen and (max-width: 750px) {
+    .productContainer {
+        p{
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+    }
+
+    .quantityControls button {
+        align-items: center;
+        width: 20px;
+        height: 20px;
+        padding: 2px 6px;
+    }
+
+    .quantityControls input {
+        width: 20px;
+        height: 20px;
+    }
+
+    .productDetails {
+        h2{
+            font-size: 1.5rem;
+        }
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .productContainer {
+        flex-direction: column;
+        p{
+            font-size: 1rem;
+            font-weight: bold;
+        }
+    }
+    .quantityControls button {
+        align-items: center;
+        margin-top: 10px
+        
+    }
+}   
