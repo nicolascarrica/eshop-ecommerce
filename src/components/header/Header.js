@@ -6,7 +6,7 @@ import { HiOutlineMenuAlt3 } from 'react-icons/hi'
 import { auth } from '../../firebase/config';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { toast } from 'react-toastify';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { SET_ACTIVE_USER, REMOVE_ACTIVE_USER } from '../../redux/slice/authSlice';
 import { ShowOnLogin, ShowOnLogout } from '../hiddenLink/HiddenLink';
 
@@ -21,17 +21,20 @@ const logo  = (
   </div>
 )
 
-const cart = (
-  <span className={styles.cart}>
-    <Link to="/cart">
-      Cart
-      <FaShoppingCart size={20} />
-      <p>0</p>
-    </Link>
-  </span>
-)
-
 const activeLink = ({ isActive }) => (isActive ? `${styles.active}` : "")
+
+const Cart = () => {
+  const productsInCart = useSelector(state => state.cart.cart);
+  return (
+    <span className={styles.cart}>
+      <Link to="/cart">
+        Cart
+        <FaShoppingCart size={20} />
+        <p>{productsInCart.length}</p>
+      </Link>
+    </span>
+  );
+}
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -39,6 +42,7 @@ const Header = () => {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
+  
 
   //Monitor currently logged in user
   useEffect(() => {
@@ -127,12 +131,12 @@ const Header = () => {
                 <NavLink to="/"  onClick={logoutUser}>Logout</NavLink>
               </ShowOnLogin>
             </span>
-            {cart}
+            <Cart />
           </div>
         </nav>
 
         <div className={styles["menu-icon"]}>
-          {cart}
+          <Cart />
           <HiOutlineMenuAlt3 size={28} onClick={toggleMenu}/>
         </div>
       </div>
