@@ -1,5 +1,18 @@
 .product-container {
     padding-top: 4cap;
+    height: 100%;
+    margin: 10px;
+
+    .noProductsMessage{
+      height: 100vh;
+      display: flex;
+      text-align: center;
+      justify-content: center;
+      p {
+        font-size: 20px;
+        color: #333;
+      }
+    }
   
     .title {
       text-align: center;
