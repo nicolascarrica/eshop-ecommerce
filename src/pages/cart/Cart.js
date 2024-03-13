@@ -4,30 +4,44 @@ import styles from './Cart.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import emptyCart from '../../assets/empty-cart.webp'
-import { removeAllCart } from '../../redux/slice/cartSlice';
+import { removeAllCart, updateCart } from '../../redux/slice/cartSlice';
 import { toast } from 'react-toastify';
 
 
 const Cart = () => {
-  const cart = useSelector((state) => state.cart.cart);
-  const [cartItems, setCartItems] = useState(cart);
+
+  useEffect(() => {
+    const savedCart = localStorage.getItem('cart');
+    if (savedCart) {
+      setCart(JSON.parse(savedCart));
+    }
+  }, []);
+  
+
+  const [cart, setCart] = useState([]);
+  const [deletedProducts, setDeletedProducts] = useState([]);
   const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const navigate = useNavigate()
 
+  
+
   const handleUpdateQuantity = (productId, newQuantity) => {
-    const updatedCart = cartItems.map(item => {
-      if (item.id === productId) {
-        return { ...item, quantity: newQuantity };
-      }
-      return item;
-    });
-    setCartItems(updatedCart);
+    if (newQuantity === 0) {
+      setDeletedProducts([...deletedProducts, productId]);
+      const updatedCart = cart.filter(item => item.id !== productId);
+    setCart(updatedCart);
+    } else{
+      const updatedCart = cart.map(item => item.id === productId ? { ...item, quantity: newQuantity } : item);
+      setCart(updatedCart);
+      localStorage.setItem('cart', JSON.stringify(updatedCart));
+      dispatch(updateCart({ id: productId, quantity: newQuantity }));
+    }
   };
 
   const calculateTotalPrice = () => {
     let totalPrice = 0;
-    cartItems.forEach((product) => {
+    cart.forEach((product) => {
       totalPrice += product.price * product.quantity;
     });
     return totalPrice;
@@ -35,7 +49,7 @@ const Cart = () => {
 
   const handleClearCart = () => {
     dispatch(removeAllCart());
-    setCartItems([]);
+    setCart([]);
     toast.success('Cart emptied');
   };
  
@@ -46,6 +60,7 @@ const Cart = () => {
       navigate('/checkout')
     }
   }
+  
   if (cart.length === 0) {
     return (
     <div className={styles.cartEmpty}>
@@ -65,11 +80,10 @@ const Cart = () => {
       <h1>It is your cart</h1>
       <h2>you have {cart.length} items in your cart</h2>
       <div className={styles.productsContainer}>
-        {cart.map((product) => (
+        {cart.filter(product => !deletedProducts.includes(product.id)).map((product) => (
           <CartProduct 
             key={`${product.id}-${product.selectedColor}-${product.selectedSize}`} 
             product={product}
-            quantity={product.quantity}
             onUpdateQuantity={handleUpdateQuantity}
           />
         ))}
