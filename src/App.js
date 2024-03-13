@@ -6,6 +6,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import FilteredProducts from "./pages/Products/FilteredProducts";
 import SingleProduct from "./pages/Products/SingleProduct";
 import Cart from "./pages/cart/Cart";
+import Checkout from "./pages/chekout/Checkout";
+
 
 
 
@@ -20,7 +22,8 @@ function App() {
           <Route path="/login" element={<Login />}/>
           <Route path="/register" element={<Register />}/>
           <Route path="/reset" element={<Reset />}/>
-          <Route path="cart" element={<Cart />}/>
+          <Route path="/cart" element={<Cart />}/>
+          <Route path="/checkout"element={<Checkout />}/>
           <Route path="/filteredProducts/:type" element={<FilteredProducts />}/>
           <Route path="/filteredProducts/:type/:id" element={<SingleProduct />}/>
         </Routes>
