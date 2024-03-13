@@ -1,9 +1,11 @@
 
 .cartContainer {
   max-width: 800px;
-  height: 100%;
   margin: 0 auto;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 
 
   h1 {
@@ -78,10 +80,15 @@ button {
   }
 }
 
-
 @media screen and (max-width: 500px) {
   .cartContainer {
+    height: 100%;
+  }
+}
+@media screen and (max-width: 520px) {
+  .cartContainer {
     padding: 10px;
+    height: 100%;
 
     h1 {
       font-size: 1.2rem;
