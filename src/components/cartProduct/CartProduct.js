@@ -5,21 +5,28 @@ import { removeFromCart } from '../../redux/slice/cartSlice';
 import { toast } from 'react-toastify';
 
 const CartProduct = ({ product, onUpdateQuantity }) => {
-  const [quantity, setQuantity] = useState(product.quantity);
+  const [quantitySelected, setQuantitySelected] = useState(product.quantity);
   const dispatch = useDispatch();
-
+ 
   const handleDecrement = () => {
-    if (quantity > 1) {
-      setQuantity(prevQuantity => prevQuantity - 1);
-      onUpdateQuantity(product.id, quantity - 1);
+    if (quantitySelected > 1) {
+      const newQuantity = quantitySelected - 1;
+      setQuantitySelected(newQuantity);
+      onUpdateQuantity(product.id, newQuantity);
+      console.log(newQuantity);
     }
   };
-
+  
   const handleIncrement = () => {
-    setQuantity(prevQuantity => prevQuantity + 1);
-    onUpdateQuantity(product.id, quantity + 1);
+    const newQuantity = quantitySelected + 1;
+    setQuantitySelected(newQuantity);
+    onUpdateQuantity(product.id, newQuantity);
   };
 
+  const handleQuantityChange = (event) => {
+    const newQuantity = parseInt(event.target.value);
+    setQuantitySelected(newQuantity);
+  };
   const handleRemove = () => {
     dispatch(removeFromCart({
       id: product.id,
@@ -30,7 +37,7 @@ const CartProduct = ({ product, onUpdateQuantity }) => {
     toast.warning('Product removed from cart');
   }
   
-  const totalPrice = product.price*quantity
+  const totalPrice = product.price*quantitySelected
 
   return (
     <div className={styles.productContainer}>
@@ -43,7 +50,7 @@ const CartProduct = ({ product, onUpdateQuantity }) => {
       </div>
         <div className={styles.quantityControls}>
           <button onClick={handleDecrement}>-</button>
-          <input type="text" value={quantity} readOnly/>
+          <input type="text" value={quantitySelected}  onChange={handleQuantityChange} readOnly/>
           <button onClick={handleIncrement}>+</button>
         </div>
         <p>Total: ${totalPrice}</p>
