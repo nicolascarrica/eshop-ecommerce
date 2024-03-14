@@ -7,6 +7,7 @@ import FilteredProducts from "./pages/Products/FilteredProducts";
 import SingleProduct from "./pages/Products/SingleProduct";
 import Cart from "./pages/cart/Cart";
 import Checkout from "./pages/chekout/Checkout";
+import OrderHistory from "./pages/orderHostory/OrderHistory";
 
 
 
@@ -19,6 +20,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />}/>
           <Route path="/contact" element={<Contact />}/>
+          <Route path="/order-history" element={<OrderHistory />}/>
           <Route path="/login" element={<Login />}/>
           <Route path="/register" element={<Register />}/>
           <Route path="/reset" element={<Reset />}/>
