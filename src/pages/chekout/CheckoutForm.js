@@ -38,7 +38,6 @@ const CheckoutForm = () => {
     e.preventDefault();
     localStorage.removeItem('cart');
     window.location.href = ('/');
-    console.log('Formulario de pago enviado');
   };
 
   const renderPaymentForm = () => {
