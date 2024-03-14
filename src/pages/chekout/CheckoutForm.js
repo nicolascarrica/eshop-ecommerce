@@ -36,6 +36,8 @@ const CheckoutForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    localStorage.removeItem('cart');
+    window.location.href = ('/');
     console.log('Formulario de pago enviado');
   };
 
